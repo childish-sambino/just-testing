@@ -21,7 +21,10 @@ jobs:
           echo ${{ steps.ip.outputs.ipv4 }}
           echo ${{ steps.ip.outputs.ipv6 }}
 
-      - run: npm install
-      - run: npm run serve &
       - run: npm i -g ngrok
-      - run: ngrok http 3636 -log=stdout >/dev/null &
+      - run: ngrok http 3636 -log=ngrok.log >/dev/null &
+      - run: sleep 1
+      - run: cat ngrok.log
+
+      - run: npm install
+      - run: npm run serve
