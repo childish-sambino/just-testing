@@ -1,0 +1,23 @@
+{
+    "name": "just-testing",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "serve": "node main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/childish-sambino/just-testing.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/childish-sambino/just-testing/issues"
+    },
+    "homepage": "https://github.com/childish-sambino/just-testing#readme",
+    "dependencies": {
+        "express": "^4.17.3"
+    }
+}
