@@ -22,6 +22,7 @@ jobs:
           echo ${{ steps.ip.outputs.ipv6 }}
 
       - run: npm i -g ngrok
+      - run: ngrok authtoken ${{ secrets.NGROK_AUTHTOKEN }}
       - run: ngrok http 3636 -log=ngrok.log >/dev/null &
       - run: sleep 1
       - run: cat ngrok.log
