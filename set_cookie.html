@@ -9,13 +9,13 @@
   }
 
   (function () {
-    window.addEventListener('message', event => {
+    window.addEventListener("message", event => {
       try {
         const data = JSON.parse(event.data);
-        if (data['test'] !== 'cookie')
+        if (data["test"] !== "cookie")
           return
 
-        parent.postMessage(JSON.stringify({ 'cookiesEnabled': checkCookiesEnabled() }), event.origin)
+        parent.postMessage(JSON.stringify({ "cookiesEnabled": checkCookiesEnabled() }), event.origin)
       }
       catch (e) {
         console.error(e)
