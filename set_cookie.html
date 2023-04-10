@@ -1,24 +1,21 @@
 <script>
-  const checkCookiesEnable = () => {
-    let isCookieEnabled = (window.navigator.cookieEnabled) ? true : false;
-    if (typeof window.navigator.cookieEnabled == "undefined" && !isCookieEnabled) {
+  const checkCookiesEnabled = () => {
+    let cookieEnabled = (window.navigator.cookieEnabled) ? true : false;
+    if (typeof window.navigator.cookieEnabled == "undefined" && !cookieEnabled) {
       document.cookie = "testcookie";
-      isCookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false;
+      cookieEnabled = document.cookie.indexOf("testcookie") != -1;
     }
-
-    return isCookieEnabled;
+    return cookieEnabled;
   }
 
   (function () {
     window.addEventListener('message', event => {
       try {
-        let data = JSON.parse(event.data)
+        const data = JSON.parse(event.data);
         if (data['test'] !== 'cookie')
           return
-        let result = checkCookiesEnable()
-        parent.postMessage(JSON.stringify({
-          'result': result
-        }), event.origin)
+
+        parent.postMessage(JSON.stringify({ 'cookiesEnabled': checkCookiesEnabled() }), event.origin)
       }
       catch (e) {
         console.error(e)
